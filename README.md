@@ -16,8 +16,8 @@ Our method, DeepASmRNA, is composed of two parts. For the first part, we use all
 We strongly recommend using Anaconda to install all dependencies. You can simply install the dependencies by running following commands.
 
 ```bash
-conda create -n ASpredict python=3.7
-conda activate ASpredict
+conda create -n DeepASmRNA python=3.7
+conda activate DeepASmRNA
 conda install tensorflow=2.1
 ```
 
@@ -26,7 +26,7 @@ conda install tensorflow=2.1
 After testing all dependencies works well, you can git clone it into your working directory, and all executable file placed in bin/
 
 ```bash
-git clone https://github.com/CMB-BNU/CoAST.git
+git clone https://github.com/CMB-BNU/DeepASmRNA.git
 ```
 
 
@@ -61,8 +61,6 @@ python classifyAS.py transcript.seq \    ### input file name
 -o transcriptas_type.txt ### optional, output file name 
 ```
 
-Note that input file should be a csv file contains 4 columns, the 1st columns for seq id, 2nd for upstream seq, 3rd for alternative seq, 4th for downstream seq. 2nd and 4th should in length 50.
-
 Also you can use a very small dataset to enhance the performance of model, for example:
 
 ```bash
@@ -75,11 +73,13 @@ Different from 'input' option, the 1st column of fine tune file should be the la
 
 If you use -ft option to fine tune the model, the meaning of -m is the basic model you choose to be trained, the original model will not be changed after each time of fine tune learning.
 
-#### running example
+## Output file :
+Note that input file should be a csv file contains 4 columns, the 1st columns for seq id, 2nd for upstream seq, 3rd for alternative seq, 4th for downstream seq. 2nd and 4th should in length 50.
+## Running example
 
 You can run the example by run.sh
 
-## Citing:
+## Citation:
 
 Please cite:
 
