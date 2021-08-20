@@ -74,7 +74,11 @@ Different from 'input' option, the 1st column of fine tune file should be the la
 If you use -ft option to fine tune the model, the meaning of -m is the basic model you choose to be trained, the original model will not be changed after each time of fine tune learning.
 
 ## Output file :
-Note that input file should be a csv file contains 4 columns, the 1st columns for seq id, 2nd for upstream seq, 3rd for alternative seq, 4th for downstream seq. 2nd and 4th should in length 50.
+For transcript.fasta as input file
+Three output file were obtained:
+1> transcriptas.txt about the AS events information which including position, identity, coverage, length 
+2> transcriptas.seq about the sequence of AS events which including the AS region and upstream 50 bp and downstream 50 bp
+3> transcriptas_type.txt about the type of the AS event and its probability
 ## Running example
 
 You can run the example by run.sh
