@@ -90,7 +90,7 @@ Three output file were obtained:
 
 ## Running example
 
-You can run the example by run.sh
+You can run the example by run_example.sh
 
 ## Citation:
 
