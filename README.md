@@ -19,6 +19,7 @@ We strongly recommend using Anaconda to install all dependencies. You can simply
 conda create -n DeepASmRNA python=3.7
 conda activate DeepASmRNA
 conda install tensorflow=2.1
+conda install biopython
 ```
 
 ## Installation:
@@ -27,6 +28,9 @@ After testing all dependencies works well, you can git clone it into your workin
 
 ```bash
 git clone https://github.com/CMB-BNU/DeepASmRNA.git
+cd DeepASmRNA/bin
+chmod 777 identifier.sh
+echo "export PATH=`pwd`:\$PATH" >>~/.bashrc && source ~/.bashrc
 ```
 
 
@@ -35,7 +39,7 @@ git clone https://github.com/CMB-BNU/DeepASmRNA.git
 
 #### first way: for overall workflow
 ```bash
-sh identifier.sh transcript.fasta species ### species, choosing from [ara, human], ara for plant human for animal
+sh identifier.sh transcript.fasta model ### For model, choosing from [arabidopsis, rice, human], arabidopsis or rice for plant, human for animal
 ```
 
 
@@ -57,7 +61,7 @@ You can run AS classification model by
 
 ```bash
 python classifyAS.py transcript.seq \    ### input file name 
--m human \    ### optional, model for species, choosing from [ara, human, rice, fine_tune], default = human
+-m human \    ### optional, model for species, choosing from [arabidopsis, human, rice, fine_tune], default = human
 -o transcriptas_type.txt ### optional, output file name 
 ```
 
@@ -65,7 +69,7 @@ Also you can use a very small dataset to enhance the performance of model, for e
 
 ```bash
 python classfyAS.py PATH/TO/input_file \    ### input file name 
--m human \    ### optional, model for species, choosing from [ara, human, rice, fine_tune], default = human
+-m human \    ### optional, model for species, choosing from [arabidopsis, human, rice, fine_tune], default = human
 -o PATH/TO/input_file \   ### optional, output file name 
 -ft PATH/TO/fine_tune_input_file ### optional, fine tune input file
 ```
