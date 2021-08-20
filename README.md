@@ -5,7 +5,7 @@ Our method, DeepASmRNA, is composed of two parts. For the first part, we use all
 
 ##### the workflow of model
 
-![img](workflow.pdf)
+![img](workflow.png)
 
 ## Dependencies:
 
