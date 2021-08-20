@@ -15,7 +15,7 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Arguments for use AttentionCNN model predict Alternative Splice event")
     parser.add_argument(dest='input', help='input sequence of AS event, a csv file contains 4 columns, the 1st columns for seq id, 2nd for upstream seq, 3rd for alternative seq, 4th for downstream seq. 2nd and 4th should in length 50', type=argparse.FileType('r'))
-    parser.add_argument('-m', help='model for specie, choose from [ara, human, rice, fine_tune]', default="human", choices=['ara', 'human', 'rice', 'fine_tune'])
+    parser.add_argument('-m', help='model for specie, choose from [arabidopsis, human, rice, fine_tune]', default="human", choices=['arabidopsis', 'human', 'rice', 'fine_tune'])
     parser.add_argument('-o', help='output file name', default="AttCnn.result.txt")
     parser.add_argument('-ft', help='input sequence and label of fine tune dataset, a csv file contains 4 columns, the 1st columns for label, in ["SE", "RI", "A3", "A5"], 2nd for upstream seq, 3rd for alternative seq, 4th for downstream seq. 2nd and 4th should in length 50', default="none")
     args = parser.parse_args()
@@ -27,7 +27,6 @@ if __name__ == '__main__':
         import fine_tune
         fine_tune.fine_tune(args.ft, M)
         M = "fine_tune"
-    #data_file = "../data/seqara50.txt.test"
     max_len = 50
 
     def label_trans(array, array_dict):

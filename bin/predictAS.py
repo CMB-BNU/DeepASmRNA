@@ -9,11 +9,12 @@ import sys
 import re
 from Bio.Blast import NCBIXML#要把Bio放在当前目录
 from Bio import SeqIO
-seqs={}
-#for seq_record in SeqIO.parse("Araport11_cdna_onlyname.fasta", "fasta"):
-for seq_record in SeqIO.parse("/data/home/zhangqb/data/wuyouzhang/blast/input.fasta", "fasta"):
-    seqs[seq_record.id]=seq_record.seq._data
 
+#打开两个文件，blast输出结果xml，输出文件
+transFile = sys.argv[2]
+seqs={}
+for seq_record in SeqIO.parse(transFile, "fasta"):
+    seqs[seq_record.id]=seq_record.seq._data
 
 
 def coverage_query_alignment_obj(alignmentObj,e_value_thresh=1000000):#得到目标序列与比对序列的identity
@@ -215,30 +216,6 @@ def compare(thishsp, lasthsp):#hsp include complenment as follow: Qstart Qend Ss
     else:
         return False
 
-def AF(onehsp):
-    (qhStart,qhEnd,queryName,subjectName,shStart,shEnd,hsplength,identity,queryLength,subjectLength) = onehsp
-    if float(identity) < 90:
-        return False
-    #if queryName[0:9] != subjectName[0:9]:
-    #   return False
-    #第一个条件，两个序列，首位置距离开始大于20bp，小于2000bpint(queryLength)*0.7
-    #print(int(shStart) - int(qhStart))
-    if int(shStart) > 20 and int(qhStart) > 20 and int(qhStart) < 2000 and int(shStart) < 2000:
-        return identity+"-"+shStart+"-"+qhStart
-    else:
-        return False
-def AL(onehsp):
-    (qhStart,qhEnd,queryName,subjectName,shStart,shEnd,hsplength,identity,queryLength,subjectLength) = onehsp
-    if float(identity) < 90:
-        return False
-    #if queryName[0:9] != subjectName[0:9]:
-    #   return False
-    #print(int(shStart) - int(qhStart))
-    #第一个条件，两个序列，末尾位置距离结束大于40bp，小于1000bp
-    if int(queryLength) - int(qhEnd) >= 20 and int(subjectLength) - int(shEnd) >= 20 and  int(queryLength) - int(qhEnd) < 2000 and int(subjectLength) - int(shEnd) < 2000:
-        return identity+"-"+str(int(queryLength) - int(qhEnd))+"-"+str(int(subjectLength) - int(shEnd))
-    else:
-        return False
 def sort_key(s):
     # 排序关键字匹配
     # 匹配开头数字序号
@@ -253,15 +230,9 @@ def strsort(alist):
     alist.sort(key=sort_key)
     return alist
 
-#seqs={}
-#for seq_record in SeqIO.parse("Araport11_cdna_onlyname.fasta", "fasta"):
-#for seq_record in SeqIO.parse("tmp.fasta", "fasta"):
-    #seqs[seq_record.id]=seq_record.seq._data
 #打开两个文件，blast输出结果xml，输出文件
 inPutFile=sys.argv[1]
-outPutFile = sys.argv[2]
-#ming=sys.argv[3]
-#maxg=sys.argv[4]
+outPutFile = sys.argv[3]
 #存到两个文件句柄
 result_handle = open(inPutFile,"r")
 out_handle = open(outPutFile, "w")
