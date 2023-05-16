@@ -50,7 +50,12 @@ def identity_query_alignment_obj(hsp,e_value_thresh=1000000):#得到目标序列
     
 #hspList =[str(qhStart), str(qhEnd), queryName, subjectName, str(shStart), str(shEnd), str(hspLength), str(round(queryIdentityPercent,2)),str(queryLength),str(subjectLength)]  
 def adj(step,up,aa,down):
-    
+    if type(up) == bytes:
+        up = up.decode('utf-8')
+    if type(aa) == bytes:
+        aa = aa.decode('utf-8')
+    if type(down) == bytes:
+        down = down.decode('utf-8')
     newup=up=up.upper()
     newaa=aa=aa.upper()
     newdown=down=down.upper()
