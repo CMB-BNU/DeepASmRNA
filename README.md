@@ -51,7 +51,7 @@ For predict AS event:
 ```bash
 makeblastdb -in transcript.fasta -dbtype nucl    ### make blast database 
 blastn -query transcript.fasta -db transcript.fasta -strand plus -evalue 1E-10 -outfmt 5 -ungapped -num_threads 20 -out transcript.xml  ### sequence alignment using blastn
-python3 predictAS.py transcript.xml transcriptas.txt >transcript.seq ### predict AS transcript pair 
+python3 predictAS.py transcript.xml  transcript.fasta transcriptas.txt >transcript.seq ### predict AS transcript pair 
 ```
 
 
@@ -94,7 +94,7 @@ You can run the example by run_example.sh
 
 ## Citation:
 
-Please cite:
+Please cite: [Cao L, Zhang Q, Song H, Lin K, Pang E. DeepASmRNA: Reference-free prediction of alternative splicing events with a scalable and interpretable deep learning model. iScience. 2022 Oct 14;25(11):105345. doi: 10.1016/j.isci.2022.105345. PMID: 36325068; PMCID: PMC9619290.](https://www.cell.com/iscience/fulltext/S2589-0042(22)01617-0)
 
 
 
